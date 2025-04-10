@@ -1,4 +1,4 @@
 #!/bin/sh
 
 export PATH
-exec /opt/YoloLabel.sh
+exec /opt/conda/envs/anylabeling/bin/anylabeling
