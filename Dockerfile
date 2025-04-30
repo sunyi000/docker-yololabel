@@ -1,4 +1,4 @@
-FROM jlesage/baseimage-gui:ubuntu-22.04-v4.5.2 AS build
+FROM jlesage/baseimage-gui:ubuntu-22.04-v4.7.1 AS build
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ Europe/Berlin
@@ -14,8 +14,8 @@ ENV QT_PLUGIN_PATH="/opt/conda/envs/anylabeling/lib/python3.12/site-packages/PyQ
 ENV LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libstdc++.so.6"
 ENV LD_LIBRARY_PATH "/usr/local/nvidia/lib:/usr/local/nvidia/lib64"
 ENV CONDA_BIN_PATH="/opt/conda/bin"
-ENV PATH $CONDA_BIN_PATH:$PATH
-ENV NVIDIA_DRIVER_CAPABILITIES "all"
+ENV PATH=$CONDA_BIN_PATH:$PATH
+ENV NVIDIA_DRIVER_CAPABILITIES="all"
 
 
 RUN apt-get update -y && apt-get install -qqy build-essential 
@@ -74,5 +74,8 @@ ENV APP_NAME="Anylabeling"
 
 ENV KEEP_APP_RUNNING=0
 ENV TAKE_CONFIG_OWNERSHIP=1
-ENV HOME /config
+ENV HOME=/config
+
+COPY rc.xml.template /opt/base/etc/openbox/rc.xml.template
+
 WORKDIR /config
