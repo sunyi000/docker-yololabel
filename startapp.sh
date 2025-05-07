@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/sh -f
 
+PATH=${PATH}:/opt/conda/envs/anylabeling/bin
 export PATH
-exec /opt/conda/envs/anylabeling/bin/anylabeling
+anylabeling
